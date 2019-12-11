@@ -1,0 +1,76 @@
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>two layouts</title>
+	<style>
+		body {
+			margin: 0;
+		}
+		.container-1 {
+			display: flex;
+			height: 240px;
+			background-color: #eee;
+		}
+
+		.container-1 .left {
+			width: 50px;
+			background-color: #999;
+		}
+
+		.container-1 .middle {
+			flex: 1;
+		}
+
+		.container-1 .right {
+			width: 50px;
+			background-color: #999;
+		}
+
+		.container-2 .left,
+		.container-2 .middle,
+		.container-2 .right {
+			height: 100%;
+		}
+
+		.container-2 {
+			position: relative;
+			height: 240px;
+			background-color: #e1e3e0;
+		}
+
+		.container-2 .left {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 50px;
+			background-color: #f4e1d2;
+		}
+
+		.container-2 .middle {
+			margin-left: 50px;
+			margin-right: 50px;
+		}
+
+		.container-2 .right {
+			position: absolute;
+			top: 0;
+			right: 0;
+			width: 50px;
+			background-color: #f4e1d2;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="container-1">
+		<div class="left"></div>
+		<div class="middle"></div>
+		<div class="right"></div>
+	</div>
+	<div class="container-2">
+		<div class="left"></div>
+		<div class="middle"></div>
+		<div class="right"></div>
+	</div>
+</body>
+</html>

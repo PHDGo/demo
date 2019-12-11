@@ -1,0 +1,63 @@
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>border transition</title>
+	<style>
+		div {
+			box-sizing: border-box;
+		}
+
+		.btn {
+			position: relative;
+			width: 100px;
+			height: 50px;
+			margin: 50px auto;
+			line-height: 50px;
+			text-align: center;
+			background-color: #eee;
+		}
+
+		.btn::before {
+			content: "";
+			display: block;
+			position: absolute;
+			width: 0;
+			height: 0px;
+			top: -2px;
+			left: -2px;
+			background-color: #e27a5f;
+			z-index: -1;
+		}
+
+		.btn:hover::before {
+			width: 104px;
+			height: 54px;
+			transition: width .2s, height .2s;
+		}
+
+		.btn::after {
+			content: "";
+			display: block;
+			position: absolute;
+			width: 0;
+			height: 0px;
+			bottom: -2px;
+			right: -2px;
+			background-color: #e27a5f;
+			z-index: -1;
+		}
+
+		.btn:hover::after {
+			width: 104px;
+			height: 54px;
+			transition: width .2s, height .2s;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="btn">
+		btn
+	</div>
+</body>
+</html>

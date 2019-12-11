@@ -1,0 +1,40 @@
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>css3 printf</title>
+	<style>
+		body {
+			margin: 0;
+			background-color: black;
+		}
+		h1 {
+			margin: 2em 1em;
+			width: 75ch;
+			font: bold 200% Consolas;
+			/*font: bold 200% "Source Code Pro";*/
+            /*必须使用等宽字体*/
+			color: lime;
+			white-space: nowrap;
+			overflow: hidden;
+			border-right: .1em solid currentcolor;
+			animation: blink-caret 1s step-end infinite,
+						typing 7s steps(75);
+		}
+
+		@keyframes blink-caret {
+			50% { border-color: transparent; }
+		}
+
+		@keyframes typing {
+			from { width: 0; }
+		}
+	</style>
+</head>
+
+<body>
+	<h1>If we didn’t have stupid thoughts, we’d have no interesting thoughts at all</h1>
+</body>
+</html>
+<!-- overflow: hidden;
+white-space: nowrap;
+text-overflow: ellipsis; -->

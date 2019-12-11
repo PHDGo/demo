@@ -1,0 +1,103 @@
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>css3 ribbon</title>
+	<style>
+		body {
+			margin: 0;
+			padding-top: 35px;
+			text-align: center;
+			background: url('dark_wood.png') repeat;
+		}
+
+		a {
+			text-decoration: none;
+			color: #000;
+		}
+
+		div {
+			margin: 0 auto;
+			background: orange;
+		}
+
+		.ribbon {
+			display: inline-block;
+			height: 3.5em;
+		}
+
+		.ribbon::before,
+		.ribbon::after {
+			content: "";
+			display: block;
+			float: left;
+			margin-top: .5rem;
+			border: 1.5em solid #fff;
+		}
+
+		.ribbon::before {
+			border-left-color: transparent;
+		}
+
+		.ribbon::after {
+			border-right-color: transparent;
+		}
+
+		.ribbon a {
+			float: left;
+			overflow: hidden;
+			height: 3.5rem;
+		}
+
+		.ribbon a:hover span{
+			margin-top: 0;
+			background: #FFD204;
+		}
+
+		.ribbon a span {
+			position: relative;
+			display: inline-block;
+			margin-top: .5em;
+			padding: 0 1rem;
+			line-height: 3rem;
+			background: #fff;
+			transition: margin-top .2s, background-color .2s;
+		}
+
+		.ribbon span::before,
+		.ribbon span::after {
+			content: "";
+			position: absolute;
+			top: 3rem;
+		}
+
+		.ribbon span::before {
+			left: 0;
+			border-right: .5rem solid #9B8651;
+			border-bottom: .5rem solid #fff;
+		}
+
+		.ribbon span::after {
+			right: 0;
+			border-left: .5rem solid #9B8651;
+			border-bottom: .5rem solid #fff;
+		}
+	</style>
+</head>
+
+<body>
+	<nav class="ribbon">
+		<a href="#">
+			<span>Home</span>
+		</a>
+		<a href="#">
+			<span>About</span>
+		</a>
+		<a href="#">
+			<span>Services</span>
+		</a>
+		<a href="#">
+			<span>Contact</span>
+		</a>
+	</nav>
+</body>
+</html>
