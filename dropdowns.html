@@ -1,0 +1,381 @@
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>dropdowns</title>
+	<style>
+		a {
+			text-decoration: none;
+			color: #000;
+			outline: none;
+		}
+
+		div {
+			box-sizing: border-box;
+		}
+
+		.clearfix::after {
+			content: "";
+			display: block;
+			clear: both;
+		}
+
+		/*** menu-1 ***/
+		.menu-1 {
+			float: left;
+			overflow: hidden;
+			width: 80px;
+			height: 30px;
+			text-align: center;
+			transition: height .4s;
+		}
+
+		.menu-1:hover {
+			height: 150px;
+		}
+
+		.menu-1 a {
+			display: block;
+			box-sizing: border-box;
+			width: 100%;
+			height: 30px;
+			border-bottom: 1px solid #fff;
+			background: #eee;
+			line-height: 30px;
+		}
+
+		/*** menu-2 ***/
+		.menu-2 {
+			float: left;
+			overflow: hidden;
+			width: 80px;
+			height: 30px;
+			margin-left: 10px;
+			text-align: center;
+		}
+
+		.menu-2:hover {
+			animation: menu2_dropdown .2s forwards steps(4, start);
+		}
+
+		.menu-1 .item,
+		.menu-2 .item,
+		.menu-3 .item,
+		.menu-4 .item,
+		.menu-6 .item {
+			height: 30px;
+			border-bottom: 1px solid #fff;
+			background: #eee;
+			line-height: 30px;
+			text-align: center;
+		}
+
+		.menu-3,
+		.menu-4,
+		.menu-5,
+		.menu-6 {
+			float: left;
+			overflow: hidden;
+			margin-left: 10px;
+			height: 30px;
+			text-align: center;
+		}
+
+		.menu-3,
+		.menu-4,
+		.menu-5 .body,
+		.menu-6 {
+			cursor: pointer;
+		}
+
+		.menu-3:hover{
+			overflow: visible;
+			height: 158px;
+		}
+
+		.menu-3 .item {
+			opacity: 0;
+			width: 80px;
+			margin-top: 2px;
+			border: none;
+			transform: translate(-10px, 0);
+		}
+
+		.menu-1 a:hover,
+		.menu-2 .item:hover,
+		.menu-3 .item:hover {
+			background: #ffd34c;
+		}
+
+		.menu-3:hover .item {
+			opacity: 1;
+			transform: translate(0, 0);
+			transition: transform .2s,
+						opacity .2s;
+		}
+
+		.menu-3:hover .item:nth-child(3),
+		.menu-4:hover .item:nth-child(3) {
+			transition-delay: .1s;
+		}
+
+		.menu-3:hover .item:nth-child(4),
+		.menu-4:hover .item:nth-child(4) {
+			transition-delay: .2s;
+		}
+
+		.menu-3:hover .item:nth-child(5),
+		.menu-4:hover .item:nth-child(5) {
+			transition-delay: .3s;
+		}
+
+		.menu-4,
+		.menu-5,
+		.menu-6  {
+			overflow: visible;
+			position: relative;
+			width: 80px;
+		}
+
+		.menu-4 .body {
+			position: absolute;
+			overflow: hidden;
+			top: 32px;
+			width: 100%;
+			height: 0;
+			border-radius: 5px;
+			background: #eee;
+			transition: height .2s;
+		}
+
+		.menu-4:hover .body {
+			height: 120px;
+		}
+
+		.menu-4 .item {
+			opacity: 0;
+			border: none;
+			background: none;
+			transform: translateY(10px);
+			transition: all 1s;
+		}
+
+		.menu-4:hover .item {
+			opacity: 1;
+			transform: translate(0);
+		}
+
+		.menu-4 .item:hover {
+			background-color: #ffd34c;
+			transition: all .1s;
+		}
+
+		.menu-5 {
+			margin: 50px 0 0 0;
+		}
+
+		.menu-5 .body {
+			display: flex;
+			flex-direction: column;
+			position: relative;
+			margin-top: 2px;
+			height: 120px;
+			border-radius: 5px;
+			background: #eee;
+		}
+
+		.menu-5 .item {
+			flex: 1;
+			border: none;
+			background: none;
+			line-height: 30px;
+			z-index: 1;
+		}
+
+		/* .menu-5 .body::after {
+			content: "";
+			position: absolute;
+			width: 100%;
+			height: 30px;
+			border-radius: 5px;
+			background: #ffd34c;
+		} */
+
+		.menu-5 .orange {
+			position: absolute;
+			width: 100%;
+			height: 30px;
+			border-radius: 5px;
+			background: #ffd34c;
+		}
+
+		.menu-6 .body {
+			position: relative;
+			display: none;
+			margin-top: 2px;
+			background: #eee;
+		}
+
+		.menu-6:hover .body {
+			display: block;
+		}
+
+		.menu-6 .item {
+			margin-bottom: 3px;
+			border: none;
+			transition: all .2s;
+		}
+
+		.menu-6:hover .item {
+			/* animation: item_bounce .4s 1 alternate; */
+		}
+
+		.menu-6 .item:hover {
+			/* width: 120%;
+			height: 36px;
+			font-size: 120%; */
+			transform: scale(1.2);
+			background: #ffd34c;
+			/* line-height: 36px; */
+		}
+
+		.menu-5 .orange {
+			transition: all .2s;
+		}
+
+		/* .menu-6:hover item:nth-child(3) {
+			animation-delay: .1s
+		}
+
+		.menu-6:hover item:nth-child(4) {
+			animation-delay: .2s
+		}
+
+		.menu-6:hover item:nth-child(5) {
+			animation-delay: .3s
+		} */
+
+		.menu-1 span,
+		.menu-2 span,
+		.menu-3 span,
+		.menu-4 span,
+		.menu-5 span,
+		.menu-6 span {
+			display: block;
+			width: 100%;
+			height: 30px;
+			line-height: 30px;
+			border-bottom: 1px solid #fff;
+			background: #dadada;
+		}
+
+		.menu-3 span,
+		.menu-4 span,
+		.menu-5 span,
+		.menu-6 span {
+			border: none;
+		}
+
+		.menu-4 span,
+		.menu-5 span {
+			border-radius: 5px;
+		}
+
+		@keyframes menu2_dropdown {
+			to {height: 150px;}
+		}
+
+		/* @keyframes item_bounce {
+			100% {
+				width: 120%;
+				height: 36px;
+			}
+		} */
+	</style>
+</head>
+
+<body>
+	<div class="container clearfix">
+		<div class="menu-1">
+			<span>菜单</span>
+			<a href="https://www.bilibili.com/v/technology/">科技</a>
+			<a href="https://www.bilibili.com/v/fashion/">时尚</a>
+			<a href="https://www.bilibili.com/v/cinephile/">影视</a>
+			<a href="https://www.bilibili.com/v/game/">游戏</a>
+		</div>
+		<div class="menu-2">
+			<span>菜单</span>
+			<a href="https://www.bilibili.com/v/technology/">
+				<div class="item">科技</div>
+			</a>
+			<a href="https://www.bilibili.com/v/fashion/">
+				<div class="item">时尚</div>
+			</a>
+			<a href="https://www.bilibili.com/v/cinephile/">
+				<div class="item">影视</div>
+			</a>
+			<a href="https://www.bilibili.com/v/game/">
+				<div class="item">游戏</div>
+			</a>
+		</div>
+		<div class="menu-3">
+			<span>菜单</span>
+			<div class="item">科技</div>
+			<div class="item">时尚</div>
+			<div class="item">影视</div>
+			<div class="item">游戏</div>
+		</div>
+		<div class="menu-4">
+			<span>菜单</span>
+			<div class="body">
+				<div class="item">科技</div>
+				<div class="item">时尚</div>
+				<div class="item">影视</div>
+				<div class="item">游戏</div>
+			</div>
+		</div>
+		<div class="menu-6">
+			<span>菜单</span>
+			<div class="body">
+				<div class="item">科技</div>
+				<div class="item">时尚</div>
+				<div class="item">影视</div>
+				<div class="item">游戏</div>
+			</div>
+		</div>
+	</div>
+	<div class="menu-5">
+		<span>板块</span>
+		<div class="body">
+			<div class="item">科技</div>
+			<div class="item">时尚</div>
+			<div class="item">影视</div>
+			<div class="item">游戏</div>
+			<div class="orange"></div>
+		</div>
+	</div>
+	<script>
+		// 为了使代码简短些，不使用兼容写法
+		var urlArr = ['https://www.bilibili.com/v/technology/',
+						'https://www.bilibili.com/v/fashion/',
+						'https://www.bilibili.com/v/cinephile/',
+						'https://www.bilibili.com/v/game/'];
+		var menu3 = document.getElementsByClassName('menu-3')[0],
+			menu5 = document.getElementsByClassName('menu-5')[0],
+			bodyMenu5 = menu5.getElementsByClassName('body')[0],
+			itemArr3 = menu3.getElementsByClassName('item'),
+			itemArr5 = bodyMenu5.getElementsByClassName('item'),
+			orange = bodyMenu5.getElementsByClassName('orange')[0];
+
+		for (let i = 0, len = itemArr3.length; i < len; i++) {
+			itemArr3[i].addEventListener('click', function(e){
+				window.location.href = urlArr[i];
+			}, false);
+		};
+
+		bodyMenu5.addEventListener('click', function(e) {
+			var index = Array.prototype.indexOf.call(itemArr5, e.target);
+			orange.style.top = index * 30 + 'px';
+		}, false);
+	</script>
+</body>
+</html>

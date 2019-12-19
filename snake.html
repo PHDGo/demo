@@ -1,0 +1,53 @@
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>snake</title>
+	<style>
+		canvas {
+			display: block;
+			margin: 20px auto;
+			background: #eee;
+		}
+	</style>
+</head>
+
+<body>
+	<canvas width="500px" height="500px" id="can"></canvas>
+	<div class="length"></div>
+	<script>
+		var ctx = document.getElementById('can').getContext('2d'),
+			snake = [25, 24], 
+			direction = 1, 
+			fruit, a, t;
+		document.onkeydown = function(e){
+			direction = snake[1] - snake[0] == (a = [-1, -20, 1, 20][(e || window.event).keyCode - 37]) ? direction : a;
+		};
+		generateFruit();
+		draw();
+		t = setInterval(function(){
+			snake.unshift(a = snake[0] + direction);
+			if (snake[0] < 0 || snake[0] > 399 || (snake[0] % 20 == 0 && direction == 1) || (snake[0] % 20 == 19 && direction == -1) || snake.indexOf(a, 1) > 0) {
+				alert('Game over!'); clearTimeout(t);return;
+			} else if (snake.indexOf(fruit) != -1) {
+				generateFruit();
+			} else {
+				snake.pop();
+			}
+			draw();
+		}, 150);
+		function generateFruit() {
+			fruit = ~~(Math.random() * 400);
+			return snake.indexOf(fruit) == -1 ? fruit : generateFruit();
+		};
+		function draw() {
+			ctx.clearRect(0, 0, 500, 500);
+			ctx.fillStyle = 'green';
+			for (var i = 0, len = snake.length; i < len; i++) {
+				ctx.fillRect(snake[i] % 20 * 25 + 1, Math.floor(snake[i] / 20) * 25 + 1, 23, 23);
+			};
+			ctx.fillStyle = 'orange';
+			ctx.fillRect(fruit % 20 * 25, Math.floor(fruit / 20) * 25, 25, 25);
+		};
+	</script>
+</body>
+</html>

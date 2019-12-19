@@ -1,0 +1,41 @@
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>drag</title>
+	<style>
+		body {
+			margin: 0;
+		}
+		.box {
+			position: absolute;
+			top: 5px;
+			left: 5px;
+			width: 100px;
+			height: 100px;
+			background: orange;
+		}
+
+		.menu {
+			display: none;
+			position: absolute;
+			width: 100px;
+			height: 100px;
+			background: #9B8651;
+		}
+	</style>
+</head>
+
+<body>
+	<a href="javascript:;" class="box"></a>
+	<div class="menu"></div>
+	<script src="utils.js"></script>
+	<script>
+		var box = document.getElementsByClassName('box')[0],
+			menu = document.getElementsByClassName('menu')[0];
+		box.dragNclick(menu, function() {
+			// window.open('http://www.baidu.com');
+			console.log('giao');
+		})
+	</script>
+</body>
+</html>
