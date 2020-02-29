@@ -63,7 +63,7 @@
 				imgObj = this.imgObjs[this.index],
 				imgWidth = imgObj.width,
 				imgHeight = imgObj.height;
-			this.ctx.clearRect(0, 0, this.width, this.height);
+			this.ctx.clearRect(0, 0, el.width, el.height);
 			this.ctx.drawImage(imgObj, (el.width - imgWidth) / 2, (el.height - imgHeight ) / 2, imgWidth, imgHeight);
 		},
 		toParticle: function() {
@@ -74,7 +74,6 @@
 				imgData = this.ctx.getImageData(0, 0, width, height),
 				data = imgData.data;
 			this.dots = [];
-			//此处为了提升性能，故不使用imgData.width和height来循环
 			for (var x = 0; x < width; x += interval) {
 				for (var y = 0; y < height; y += interval) {
 					var i = (x + y * width) * 4;
@@ -106,8 +105,11 @@
 					}
 				}
 			}
+			console.log(this.dots)
 		},
 		combineParticle: function () {
+			var el = this.el
+			this.ctx.clearRect(0, 0, el.width, el.height)
 			var combine = this.dots.every(dot => {
 				this.drawDot(dot);
 				if (Math.abs(dot.ix - dot.x) < 0.1 && Math.abs(dot.iy - dot.y) < 0.1 && Math.abs(dot.iz - dot.z) < 0.1) {
@@ -126,17 +128,20 @@
 			});
 
 			if (combine === true) {
-				setTimeOut(this.seperateParticle, 500);
+				setTimeout(() => this.seperateParticle(), 500);
 			} else {
-				requestAnimationFrame(this.combineParticle);
+				requestAnimationFrame(() => this.combineParticle());
 			};
 		},
 		seperateParticle: function () {
+			var el = this.el
+			this.ctx.clearRect(0, 0, el.width, el.height)
 			var seperate = this.dots.every(dot => {
+				this.drawDot(dot);
 				if (Math.abs(dot.ix - dot.tx) < 0.1 && Math.abs(dot.iy - dot.ty) < 0.1 && Math.abs(dot.iz - dot.tz) < 0.1) {
 					[dot.ix, dot.iy, dot.iz, dot.ir, dot.ig, dot.ib, dot.ia] = [dot.tx, dot.ty, dot.tz, dot.tr, dot.tg, dot.tb, dot.ta];
 					return true;
-				} else {  
+				} else {
 					dot.ix += (dot.tx - dot.ix) * 0.7;
 					dot.iy += (dot.ty - dot.iy) * 0.7;
 					dot.iz += (dot.tz - dot.iz) * 0.7;
@@ -149,9 +154,9 @@
 			});
 
 			if (seperate = true) {
-				setTimeOut(this.picLoop, 500);
+				setTimeout(() => this.picLoop(), 500);
 			} else {
-				requestAnimationFrame(this.seperateParticle);
+				requestAnimationFrame(() => this.seperateParticle());
 			}
 		},
 		drawDot: function (dot) {
