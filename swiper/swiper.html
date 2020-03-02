@@ -6,12 +6,17 @@
 
 <body>
 	<div class="swp">
-		<div class="left"></div>
+		<!-- <div class="left"></div>
 		<div class="right"></div>
 		<div class="pagination"></div>
-		<div class="body"></div>
+		<div class="body"></div> -->
 	</div>
 	<script src="swiper.js"></script>
-	<script></script>
+	<script>
+		import 'swiper.css'
+		var swp = document.querySelector('.swp'),
+			imgUrls = []
+		new Swiper(swp, imgUrls)
+	</script>
 </body>
 </html>

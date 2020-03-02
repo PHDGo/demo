@@ -13,8 +13,8 @@
 </head>
 <body>
 	<canvas class="particle-canvas" width="1000px" height="500px"></canvas>
-	<script src="src/particle.js"></script>
-	<script>
+	<script type="module">
+		import Particle from './src/particle.js';
 		var particle = new Particle({
 			el: document.getElementsByClassName('particle-canvas')[0],
 			imgUrls: ['src/img/1.jpg', 'src/img/2.jpg', 'src/img/3.jpg'],
