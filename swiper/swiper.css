@@ -1,0 +1,96 @@
+.swiper-wrapper {
+	position: relative;
+	background-color: #eee;
+	user-select: none;
+}
+
+.swiper-wrapper .body {
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
+
+.swiper-wrapper .body ul {
+	height: 100%;
+	transition: all .2s;
+}
+
+.swiper-wrapper .body li {
+	float: left;
+	height: 100%;
+}
+
+.swiper-wrapper .pagination {
+	position: absolute;
+	height: 14px;
+	bottom: 5px;
+}
+
+.swiper-wrapper .pagination ul {
+	display: flex;
+	align-items: center;
+}
+
+.swiper-wrapper .pagination li {
+	float: left;
+	margin: 2px;
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
+	background-color: #000;
+	opacity: .5;
+	transition: all .2s;
+}
+
+.swiper-wrapper .pagination li.active {
+	width: 10px;
+	height: 10px;
+	opacity: 1;
+}
+
+.swiper-wrapper .left,
+.swiper-wrapper .right {
+	position: absolute;
+	width: 50px;
+	top: calc(50% - 25px);
+	font-size: 50px;
+	color: rgba(0, 0, 0, .3);
+	line-height: 50px;
+	text-align: center;
+	user-select: none;
+}
+
+.swiper-wrapper .left:hover,
+.swiper-wrapper .right:hover {
+	color: rgba(0, 0, 0, 1);
+}
+
+.swiper-wrapper .left {
+	left: 10px;
+}
+
+.swiper-wrapper .right {
+	right: 10px;
+}
+
+.clearfix::after {
+	content: '';
+	display: block;
+	clear: both;
+}
+
+@font-face {font-family: "iconfont";
+  src: url('font/iconfont.eot?t=1583162863880'); /* IE9 */
+  src: url('font/iconfont.eot?t=1583162863880#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('font/iconfont.woff?t=1583162863880') format('woff'),
+  url('font/iconfont.ttf?t=1583162863880') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+ */
+  url('font/iconfont.svg?t=1583162863880#iconfont') format('svg'); /* iOS 4.1- */
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
